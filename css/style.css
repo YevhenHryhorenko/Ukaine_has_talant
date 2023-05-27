@@ -1,0 +1,49 @@
+body {
+    background: thistle;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 50px;
+    text-transform: capitalize;
+}
+
+.btn_menu {
+    display: flex;
+    width: 100%;
+    background-color: tomato;
+    padding: 30px;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    font-size: 20px;
+}
+
+li button {
+    cursor: pointer;
+    font-size: 20px;
+    border: none;
+    background: none;
+}
+
+li a {
+    text-decoration: none;
+    color: black;
+}
+
+li::marker {
+    content: "";
+}

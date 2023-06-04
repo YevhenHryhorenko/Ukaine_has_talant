@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Україна має талант</title>
+        <title>Ukraine has talant</title>
         <link rel="stylesheet" href="./css/style.css">
+        
     </head>
     <body>
         <header>
@@ -24,17 +25,27 @@
                                 <img class="show-name-fixed" src="./source/show-name-fixed.webp" alt="show-name">
                             </a>
                             <div class="start-wrapper display-dsk">
-                                <button class="start-btn">
+                                <button class="start-btn" id="modal-open">
                                     Create tournament
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
+                <dialog id="modal-dialog">
+                    <div class="dialog-content">
+                        <h2>Here you can enter the number of participants in the show</h2>
+                        <label for="participants" class="participants-count">
+                            Number of participants
+                            <input type="number" name="participants" id="participants" min="20" max="50">
+                        </label>
+                        <a href="./pages/table.html" class="create-btn">Let's start</a>
+                    </div>
+                </dialog>
             </section>
             <section class="none-dsk">
                 <div class="start-wrapper">
-                    <button class="start-btn">
+                    <button class="start-btn" id="modal-open">
                         Create tournament
                     </button>
                 </div>
@@ -48,5 +59,6 @@
                 </div>
             </div>
         </footer>
+        <script src="./js/main.js" defer></script>
     </body>
 </html>

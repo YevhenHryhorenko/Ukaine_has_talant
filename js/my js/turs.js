@@ -1,9 +1,12 @@
 let juris = [];
 let participants = [];
 let corectusers = [];
+let cnt = true;
+let arrRender = [];
+let numberct = 0;
 for (let i = 1; ; i++) {
     if (localStorage.getItem(`Participant-${i}-name`) != null) {
-        let name = localStorage.getItem(`Participant-${i}-name`);
+        let name = localStorage.getItem(`Participant-${i}-name`)
         participants.push(name.slice(0, name.indexOf(':')));
     }
     else {
@@ -25,30 +28,20 @@ for (let i = 1; ; i++) {
 function startTournament() {
     let counter = 0;
     let users = [];
+
     participants.map((elem) => {
         elem = new user(elem, ++counter, givemark(juris));
         users.push(elem);
     })
+
     let usersnames = [];
     users.map(elem => {
         usersnames.push(elem.name)
-        usersnames.sort(uaSort);
-    })
-
-    for (let i = 0; i < users.length; i++) {
-        for (let i = 0; i < usersnames.length; i++) {
-            if (users[i].name == usersnames[i]) {
-
-                users[i] = users[i];
-                users[i] = null;
-            }
-
-
+        if (cnt) {
+            usersnames.sort(uaSort);
         }
 
-
-    }
-    console.log(users);
+    })
 
 
     function i() {
@@ -61,32 +54,20 @@ function startTournament() {
             return b - a;
         });
         first: for (let i = 0; i < users.length; i++) {
-            let r = 1;
             for (let count = 0; count < arrmarks.length; count++) {
-
-
-
-
                 if (users[i].markSum == arrmarks[count]) {
 
                     corectusers[count] = users[i];
-
                     arrmarks[count] = 0;
                     continue first;
+
                 }
-
             }
-
-
         }
-
-
-
-        console.log(arrmarks);
+        arrmarks = []
     }
 
     i();
-    console.log(corectusers);
 }
 
 
@@ -140,62 +121,77 @@ function uaSort(s1, s2) {
     return s1.localeCompare(s2);
 }
 
-startTournament();
+
 function renderuser() {
-    var arrRender = [`<tr><th></th><th>Name</th><th>Сергій Притула</th><th>Ектор Хіменес-Браво</th><th>Алла Костромічова</th></tr>`];
+    var arrRender = [
+        `<tr><th></th><th>Name</th><th>${juris[0]}</th><th>${juris[1]}</th><th>${juris[2]}</th></tr>`
+    ];
+
     let count = 1;
-    arrRender.push(corectusers.map(elem => {
-        return `<tr>
+
+    arrRender.push(
+        ...corectusers.map(elem => {
+            return `<tr>
         <td>${count++}</td>
         <td>${elem.name}</td>
-
         ${elem.mark.map(elem1 => {
-            return `<td>${elem1.marks}</td>`
-        })}
-        </tr>`
-    }))
-    return arrRender;
+                return `<td>${elem1.marks}</td>`;
+            }).join('')}
+      </tr>`;
+        })
+    );
+
+    return arrRender.join('');
 }
-
-
 
 function renderTour() {
+    startTournament();
     let table = document.querySelector('tbody');
-    console.log(table);
+
     if (table != undefined) {
         table.innerHTML = '';
-        console.log(table);
-
-
-        table.innerHTML = renderuser().map(elem => {
-            console.log
-            if (elem.length == Array) {
-                return elem.join('')
-            }
-            else {
-                return elem;
-            }
-
-        });;
-
+        table.innerHTML = renderuser();
     }
+
     participants = [];
-    for (let i = 0; i < (corectusers.length) / 2; i++) {
+    arrRender = [];
 
-
+    for (let i = 0; i < corectusers.length / 2; i++) {
+        participants[i] = corectusers[i].name;
     }
 
-
+    corectusers = [];
 }
 
-let buttons = document.querySelectorAll('.start-btn');
 
-buttons.map(elem => {
-    elem.addEventListener('click', () => {
-        let table = document.querySelector('tbody');
-        table.innerHTML = '';
-
-    })
-})
 
 renderTour();
+
+let btn = document.querySelectorAll('.start-btn');
+
+
+
+
+if (btn != undefined) {
+    for (let i = 0; i < btn.length; i++) {
+        btn[i].addEventListener('click', () => {
+            if (participants.length >= 10) {
+                numberct++;
+
+                cnt = false;
+                renderTour();
+                for (let i = 1; i < 4; i++) {
+                    localStorage.clear
+                    localStorage.setItem(`${i}_place`, participants[i - 1]);
+
+
+                }
+
+            }
+        })
+
+
+    }
+}
+
+

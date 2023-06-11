@@ -4,11 +4,10 @@
 
 
 * {
+    font-family: Roboto, sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Roboto, sans-serif;
     box-sizing: border-box;
-    
 }
 
 body {
@@ -16,16 +15,14 @@ body {
     background-image: url(../source/scene.jpg);
     background-size: cover;
     background-position: center;
-
 }
 
 .wrapper {
-    height: 100vh;
-    width: 100wv;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* background: #16294ad9; */
+    width: 100wv;
+    height: 100vh;
     background: linear-gradient( #243B55, #16294ad9);
 }
 
@@ -43,7 +40,6 @@ header {
 
 .header h1 {
     text-align: center;
-    /* font-size: 24px; */
     cursor: pointer;
 }
 
@@ -51,36 +47,37 @@ header {
 /* MAIN */
 
 main {
-    max-width: 1200px;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     margin: 24px auto 0 auto;
+    width: 100%;
+    max-width: 1200px;
 }
 
 
 /* TABLE */
 
 .table {
+    font-weight: 700;
     padding: 0 12px;
     width: 100%;
-    font-weight: 700;
 }
 
 .winner {
-    flex-direction: row;
+    font-size: 24px;
+
     display: flex;
-    padding: 24px 48px 24px 48px;
+    flex-direction: row;
+    justify-content: space-between;
     margin: 24px auto;
+    padding: 24px 48px 24px 48px;
+    border-radius: 8px;
+    max-width: 650px;
+    opacity: 0;
     color: #16294a;
     background-color: #FFD700;
-    max-width: 650px;
-    justify-content: space-between;
-    font-size: 24px;
-    border-radius: 8px;
-    opacity: 0;
     animation-name: winners;
     animation-duration: 1.6s;
     animation-iteration-count: 1;
@@ -105,17 +102,18 @@ main {
 }
 
 .second {
-    flex-direction: row;
+    font-size: 24px;
+
     display: flex;
-    padding: 24px 48px 24px 48px;
+    flex-direction: row;
+    justify-content: space-between;
     margin: 24px auto;
+    padding: 24px 48px 24px 48px;
+    border-radius: 8px;
+    max-width: 650px;
+    opacity: 0;
     color: #16294a;
     background-color: #FFD700;
-    max-width: 650px;
-    justify-content: space-between;
-    font-size: 24px;
-    border-radius: 8px;
-    opacity: 0;
     animation-name: winners;
     animation-duration: 1.6s;
     animation-iteration-count: 1;
@@ -140,17 +138,18 @@ main {
 }
 
 .third {
-    flex-direction: row;
-    display: flex;
-    padding: 24px 48px 24px 48px;
-    margin: 24px auto;
-    color: #16294a;
-    background-color: #FFD700;
-    max-width: 650px;
-    justify-content: space-between;
     font-size: 24px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 24px auto;
+    padding: 24px 48px 24px 48px;
+    max-width: 650px;
     border-radius: 8px;
     opacity: 0;
+    color: #16294a;
+    background-color: #FFD700;
     animation-name: winners;
     animation-duration: 1.6s;
     animation-iteration-count: 1;
@@ -178,11 +177,11 @@ main {
 /* BUTTON */
 
 .btn-container {
+    display: flex;
+    justify-content: center;
     margin-top: 24px;
     margin-bottom: 48px;
     padding: 0 24px;
-    display: flex;
-    justify-content: center;
     opacity: 0;
     animation-name: opacity;
     animation-duration: 1.5s;
@@ -191,22 +190,22 @@ main {
     animation-delay: 3s;
 }
 
-button {
+.back-btn {
+    font-family: 'Rampart One', cursive;
+    font-weight: 700;
+    font-size: 20px;
+
     display: block;
     padding: 10px 24px;
     border: 0;
     border-radius: 8px;
     color: #16294a;
     background-color: #FFD700;
-    font-family: 'Rampart One', cursive;
-    font-weight: 700;
     text-transform: uppercase;
-    font-size: 20px;
     cursor: pointer;
-    
 }
 
-button:hover {
+.back-btn:hover {
     opacity: 0.8;
     animation: none;
 }

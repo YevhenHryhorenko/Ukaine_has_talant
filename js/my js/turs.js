@@ -4,6 +4,7 @@ let corectusers = [];
 let cnt = true;
 let arrRender = [];
 let numberct = 0;
+let winers = [];
 for (let i = 1; ; i++) {
     if (localStorage.getItem(`Participant-${i}-name`) != null) {
         let name = localStorage.getItem(`Participant-${i}-name`)
@@ -156,11 +157,14 @@ function renderTour() {
     participants = [];
     arrRender = [];
 
+
     for (let i = 0; i < corectusers.length / 2; i++) {
         participants[i] = corectusers[i].name;
+        winers[i] = corectusers[i];
     }
 
     corectusers = [];
+
 }
 
 
@@ -182,10 +186,23 @@ if (btn != undefined) {
                 renderTour();
                 for (let i = 1; i < 4; i++) {
                     localStorage.clear
-                    localStorage.setItem(`${i}_place`, participants[i - 1]);
+                    console.log(winers[i].markSum);
+                    localStorage.setItem(`Winner_${i}`, `${participants[i - 1]}: ${winers[i].markSum}`);
+
 
 
                 }
+
+            }
+            else {
+                for (let i = 0; i < btn.length; i++) {
+
+                    btn[i].innerHTML = 'finall';
+                    btn[i].addEventListener('click', () => {
+                        btn[i].href = '../pages/finalPage.html';
+                    })
+                }
+
 
             }
         })
@@ -194,4 +211,7 @@ if (btn != undefined) {
     }
 }
 
+function renderfinal() {
+    finalusers = [];
 
+}

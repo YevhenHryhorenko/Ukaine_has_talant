@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Rampart+One&family=Roboto:wght@400;700&display=swap');
 
 * {
+    font-family: Roboto, sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Roboto, sans-serif;
 }
 
 a {
@@ -12,9 +12,9 @@ a {
 }
 
 .container {
-    max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
+    max-width: 1200px;
 }
 
 header {
@@ -22,11 +22,11 @@ header {
 }
 
 header h1 {
-    font-size: 25px;
     font-family: 'Rampart One', cursive;
-    color: #16294a;
+    font-size: 25px;
     text-align: center;
     text-transform: uppercase;
+    color: #16294a;
 }
 
 .header {
@@ -41,11 +41,11 @@ header h1 {
 }
 
 .banner-pseudocontent {
-    height: 80vh;
-    position: relative;
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
+    height: 80vh;
 }
 
 .show-name-fixed {
@@ -58,13 +58,17 @@ header h1 {
 }
 
 .banner-heading {
-    font-size: 30px;
-    color: #FFD700;
     margin-bottom: 24px;
     max-width: 350px;
+    font-size: 30px;
+    color: #FFD700;
 }
 
 .start-btn {
+    font-family: 'Rampart One', cursive;
+    font-weight: 700;
+    font-size: 20px;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,10 +78,7 @@ header h1 {
     width: 100%;
     color: #16294a;
     background-color: #FFD700;
-    font-family: 'Rampart One', cursive;
-    font-weight: 700;
     text-transform: uppercase;
-    font-size: 20px;
     transition: all .3s ease;
     animation: tilt-n-move-shaking infinite ease 0.3s;
 }
@@ -99,10 +100,10 @@ header h1 {
 .dialog-content {
     display: flex;
     flex-direction: column;
+    text-align: center;
     gap: 20px;
     padding: 20px;
     max-width: 350px;
-    text-align: center;
 }
 
 .dialog-content h2,
@@ -111,18 +112,18 @@ header h1 {
 }
 
 input[type=number] {
-    width: 30%;
-    border-radius: 3px;
-    transition: all 1s ease;
     border: 0;
+    border-radius: 3px;
     padding: 2px;
+    width: 30%;
+    transition: all 1s ease;
     outline: #16294a auto 1px;
 }
 
 input[type=number]:focus-visible {
-    outline: #16294a auto 2px;
     border: 0;
     transform: scale(1.1);
+    outline: #16294a auto 2px;
 }
 
 .create-btn {
@@ -166,9 +167,9 @@ input[type=number]:focus-visible {
 }
 
 footer {
-    background-color: #FFD700;
     text-align: center;
     color: #16294a;
+    background-color: #FFD700;
 }
 
 .footer {

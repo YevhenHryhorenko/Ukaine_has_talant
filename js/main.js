@@ -5,7 +5,7 @@ const modal = document.getElementById(`modal-dialog`);
 openButtons.forEach(openButton => {
   openButton.addEventListener('click', () => {
     modal.showModal();
-    // modal.classList.add('opacity-1')
+    modal.style.opacity = '1';
   });
 });
 

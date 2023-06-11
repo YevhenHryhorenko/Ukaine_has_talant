@@ -92,7 +92,8 @@ header h1 {
     margin: auto;
     border: 0;
     border-radius: 8px;
-    transition: all .3s ease;
+    opacity: 0;
+    transition: all .5s ease;
 }
 
 .dialog-content {
@@ -102,6 +103,36 @@ header h1 {
     padding: 20px;
     max-width: 350px;
     text-align: center;
+}
+
+.dialog-content h2,
+.dialog-content label {
+    color: #16294a;
+}
+
+input[type=number] {
+    width: 30%;
+    border-radius: 3px;
+    transition: all 1s ease;
+    border: 0;
+    padding: 2px;
+    outline: #16294a auto 1px;
+}
+
+input[type=number]:focus-visible {
+    outline: #16294a auto 2px;
+    border: 0;
+    transform: scale(1.1);
+}
+
+.create-btn {
+    color: #16294a;
+    transition: all .3s ease;
+}
+
+.create-btn:hover {
+    transform: scale(1.1);
+    text-decoration: underline;
 }
 
 .participants-count {

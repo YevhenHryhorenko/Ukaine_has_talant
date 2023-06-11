@@ -1,217 +1,113 @@
-// let juris = [];
-// let participants = [];
-// let corectusers = [];
-// for (let i = 1; ; i++) {
-//     if (localStorage.getItem(`Participant-${i}-name`) != null) {
-//         participants.push(localStorage.getItem(`Participant-${i}-name`))
-//     }
-//     else {
-//         break;
-//     }
-
-// }
-
-// for (let i = 1; ; i++) {
-//     if (localStorage.getItem(`Judge-${i}-name`) != null) {
-//         juris.push(localStorage.getItem(`Judge-${i}-name`))
-//     }
-//     else {
-//         break;
-//     }
-
-// }
-
-// function startTournament() {
-//     let counter = 0;
-//     let users = [];
-//     participants.map((elem) => {
-//         elem = new user(elem.slice(0, elem.indexOf(':')), ++counter, givemark(juris));
-//         users.push(elem);
-//     })
-//     console.log(users);
-//     let usersnames = [];
-
-//     function i() {
-
-//         let arrmarks = [];
-//         users.map((elem) => {
-//             arrmarks.push(elem.marckssume);
-//             usersnames.push(elem.name)
-//         })
-//         arrmarks.sort((a, b) => {
-//             return b - a;
-//         });
-//         usersnames.sort(uaSort);
-//         console.log(usersnames);
-//         arrmarks.map(elem => {
-//             for (let i = 0; i < users.length; i++) {
-//                 if (users[i].marckssume != users[++i].marckssume) {
-//                     if (users[i].marckssume == elem) {
-//                         corectusers.push(users[i]);
-//                     }
-//                 }
-//                 else {
-//                     console.log('1')
-//                     usersnames.map(elem1 => {
-
-//                         if (users[i].name == elem1) {
-//                             console.log(usersnames.indexOf(elem1));
-//                             corectusers[usersnames.indexOf(elem1)] = elem;
-//                         }
-//                     })
-
-//                 }
-
-//             }
-//         })
-//     }
-//     i();
-//     console.log(corectusers);
-// }
-
-
-// class user {
-//     constructor(name, id, mark) {
-//         this.name = name;
-//         this.id = id;
-//         this.mark = mark;
-//         this.marckssume = this.marckssum();
-//     }
-//     marckssum() {
-//         let marks = [];
-
-//         this.mark.map(elem => {
-//             marks.push(elem.marks);
-//         });
-//         let o = 0;
-//         return Math.round(marks.reduce((sum, current) => sum + current, 0));
-//     }
-//     createuser() {
-
-//     }
-// }
-
-// class Juri {
-//     constructor(name) {
-//         this.name = name;
-//     }
-//     givemark() {
-//         let rand = Math.floor(Math.random() * 10);
-//         rand = (rand != 0) ? rand : 1
-//         return rand;
-//     }
-// }
-
-// function givemark(juri) {
-//     let marks = [];
-//     juri.map(elem => {
-
-//         let elem1 = new Juri(elem.slice(0, elem.indexOf(':')), elem.slice(elem.indexOf(':')));
-//         marks.push({
-//             name: elem1.name,
-//             marks: elem1.givemark(),
-//         });
-//     })
-//     return marks
-// }
-
-
-// function uaSort(s1, s2) {
-//     return s1.localeCompare(s2);
-// }
-
-// startTournament();
-// function examination() {
-
-// }
-
 let juris = [];
 let participants = [];
 let corectusers = [];
-
 for (let i = 1; ; i++) {
     if (localStorage.getItem(`Participant-${i}-name`) != null) {
-        participants.push(localStorage.getItem(`Participant-${i}-name`));
-    } else {
+        let name = localStorage.getItem(`Participant-${i}-name`);
+        participants.push(name.slice(0, name.indexOf(':')));
+    }
+    else {
         break;
     }
+
 }
 
 for (let i = 1; ; i++) {
     if (localStorage.getItem(`Judge-${i}-name`) != null) {
-        juris.push(localStorage.getItem(`Judge-${i}-name`));
-    } else {
+        juris.push(localStorage.getItem(`Judge-${i}-name`))
+    }
+    else {
         break;
     }
+
 }
 
 function startTournament() {
     let counter = 0;
     let users = [];
-
     participants.map((elem) => {
-        elem = new User(elem.slice(0, elem.indexOf(':')), ++counter, giveMark(juris));
+        elem = new user(elem, ++counter, givemark(juris));
         users.push(elem);
-    });
+    })
+    let usersnames = [];
+    users.map(elem => {
+        usersnames.push(elem.name)
+        usersnames.sort(uaSort);
+    })
 
+    for (let i = 0; i < users.length; i++) {
+        for (let i = 0; i < usersnames.length; i++) {
+            if (users[i].name == usersnames[i]) {
+
+                users[i] = users[i];
+                users[i] = null;
+            }
+
+
+        }
+
+
+    }
     console.log(users);
 
-    let usersnames = [];
 
-    function updateUsers() {
+    function i() {
+
         let arrmarks = [];
         users.map((elem) => {
-            arrmarks.push(elem.marckssume);
-            usersnames.push(elem.name);
-        });
-
+            arrmarks.push(elem.markSum);
+        })
         arrmarks.sort((a, b) => {
             return b - a;
         });
+        first: for (let i = 0; i < users.length; i++) {
+            let r = 1;
+            for (let count = 0; count < arrmarks.length; count++) {
 
-        usersnames.sort(uaSort);
 
-        console.log(usersnames);
 
-        arrmarks.map((elem) => {
-            for (let i = 0; i < users.length; i++) {
-                if (users[i].marckssume != users[i + 1].marckssume) {
-                    if (users[i].marckssume == elem) {
-                        corectusers.push(users[i]);
-                    }
-                } else {
-                    console.log('1');
-                    const userIndex = usersnames.indexOf(users[i].name);
-                    if (userIndex !== -1) {
-                        corectusers[userIndex] = elem;
-                    }
+
+                if (users[i].markSum == arrmarks[count]) {
+
+                    corectusers[count] = users[i];
+
+                    arrmarks[count] = 0;
+                    continue first;
                 }
+
             }
-        });
+
+
+        }
+
+
+
+        console.log(arrmarks);
     }
 
-    updateUsers();
+    i();
     console.log(corectusers);
 }
 
-class User {
+
+class user {
     constructor(name, id, mark) {
         this.name = name;
         this.id = id;
         this.mark = mark;
-        this.marckssume = this.marckssum();
+        this.markSum = this.marckssum();
     }
-
     marckssum() {
         let marks = [];
-        this.mark.map((elem) => {
+
+        this.mark.map(elem => {
             marks.push(elem.marks);
         });
+        let o = 0;
         return Math.round(marks.reduce((sum, current) => sum + current, 0));
     }
+    createuser() {
 
-    createUser() {
-        // Code for creating user
     }
 }
 
@@ -219,32 +115,87 @@ class Juri {
     constructor(name) {
         this.name = name;
     }
-
-    giveMark() {
+    givemark() {
         let rand = Math.floor(Math.random() * 10);
-        rand = (rand !== 0) ? rand : 1;
+        rand = (rand != 0) ? rand : 1
         return rand;
     }
 }
 
-function giveMark(juris) {
+function givemark(juri) {
     let marks = [];
-    juris.map((elem) => {
+    juri.map(elem => {
+
         let elem1 = new Juri(elem.slice(0, elem.indexOf(':')), elem.slice(elem.indexOf(':')));
         marks.push({
             name: elem1.name,
-            marks: elem1.giveMark(),
+            marks: elem1.givemark(),
         });
-    });
-    return marks;
+    })
+    return marks
 }
+
 
 function uaSort(s1, s2) {
     return s1.localeCompare(s2);
 }
 
 startTournament();
+function renderuser() {
+    var arrRender = [`<tr><th></th><th>Name</th><th>Сергій Притула</th><th>Ектор Хіменес-Браво</th><th>Алла Костромічова</th></tr>`];
+    let count = 1;
+    arrRender.push(corectusers.map(elem => {
+        return `<tr>
+        <td>${count++}</td>
+        <td>${elem.name}</td>
 
-function examination() {
-    // Code for examination
+        ${elem.mark.map(elem1 => {
+            return `<td>${elem1.marks}</td>`
+        })}
+        </tr>`
+    }))
+    return arrRender;
 }
+
+
+
+function renderTour() {
+    let table = document.querySelector('tbody');
+    console.log(table);
+    if (table != undefined) {
+        table.innerHTML = '';
+        console.log(table);
+
+
+        table.innerHTML = renderuser().map(elem => {
+            console.log
+            if (elem.length == Array) {
+                return elem.join('')
+            }
+            else {
+                return elem;
+            }
+
+        });;
+
+    }
+    participants = [];
+    for (let i = 0; i < (corectusers.length) / 2; i++) {
+
+
+    }
+
+
+}
+
+let buttons = document.querySelectorAll('.start-btn');
+
+buttons.map(elem => {
+    elem.addEventListener('click', () => {
+        let table = document.querySelector('tbody');
+        table.innerHTML = '';
+
+    })
+})
+
+renderTour();
